@@ -1,6 +1,6 @@
 <h1>Order Shoos</h1>
 
-<form action="/order" method="post">
+<form action="/order/new" method="post">
   <table>
     <tr>
       <td><label for="title">Title:</label></td>
@@ -33,5 +33,5 @@
   </table>
 </form>
 <% if @message.length > 0 %>
-<p><%= @message %></p>
+<div><p><%= @message %></p></div>
 <% end %>

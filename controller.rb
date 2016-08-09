@@ -5,13 +5,13 @@ require_relative('models/item')
 require_relative('models/order')
 
 get( '/order/new' ) do
+  @message = ""
   @title = "Buy Shoos"
   @stock = Item.available
-  @message = ""
   erb( :new )
 end
 
-post( '/order' ) do
+post( '/order/new' ) do
   @order = Order.new(params)
   missing_fields = @order.missing_fields
   @item = Item.get_by_size(@order.size)
