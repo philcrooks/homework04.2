@@ -1,0 +1,34 @@
+<h1>Order Shoos</h1>
+
+<form action="/order" method="post">
+  <table>
+    <tr>
+      <td><label for="title">Title:</label></td>
+      <td><input type="text" name="title"></td>
+    </tr>
+    <tr>
+      <td><label for="first_name">First Name:</label></td>
+      <td><input type="text" name="first_name"></td>
+      <td><label for="last_name">Last Name:</label>
+      <td><input type="text" name="last_name"></td>
+    </tr>
+    <tr>
+      <td><label for="address">Address:</label></td>
+      <td colspan="3"><input type="text" name="address" width="100%"></td>
+    </tr>
+    <tr>
+      <td><label for="size">Select a size:</label></td>
+      <td><select name="size">
+          <% @stock.each do | shoo | %>
+          <option value="<%=shoo.size%>"><%="#{shoo.size} (#{shoo.available} available)"%></option>
+          <% end %>    
+        </select>
+      </td>
+      <td><label for="quantity">Quantity:</label></td>
+      <td><input type="number" name="quantity"></td>
+    </tr>
+    <tr>
+      <td align="right" colspan="4"><input type="submit" value="Order Shoos" ></td>
+    </tr>
+  </table>
+</form>

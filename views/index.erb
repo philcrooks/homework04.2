@@ -1,0 +1,10 @@
+<h1>List of Orders</h1>
+
+<% @orders.each do | order | %>
+<p><%= "Order:    #{order.id}" %></p>
+<p><%= "Name:     #{order.full_name}" %></p>
+<p><%= "Address:  #{order.address}" %></p>
+<p><%= "Size:     #{order.size}" %></p>
+<p><%= "Quantity: #{order.quantity}" %></p>
+<hr>
+<% end %>
