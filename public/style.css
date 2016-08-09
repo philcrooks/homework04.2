@@ -4,4 +4,20 @@ body {
 
 div {
   color: red;
+  font-size: 12px;
+}
+
+form {
+  color: white;
+  font-size: 12px;
+}
+
+table {
+  padding: 10px;
+  background-color: grey;
+  width: 450px;
+}
+
+td {
+  padding: 2px;
 }
