@@ -34,4 +34,16 @@ class TestOrder < Minitest::Test
     retrieved_order = Order.all.last
     assert_equal(true, retrieved_order.id > 0)
   end
+
+  def test_missing_field
+    assert_equal([], @order.missing_fields)
+    @order.first_name = ""
+    assert_equal(1, @order.missing_fields.count)
+    assert_equal("First Name", @order.missing_fields.first)
+    @order.last_name = ""
+    @order.title = ""
+    fields = @order.missing_fields
+    assert_equal(3, fields.count)
+    assert_equal("Title, First Name and Last Name", Order.fields_to_string(fields))
+  end
 end

@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td><label for="address">Address:</label></td>
-      <td colspan="3"><input type="text" name="address" width="100%"></td>
+      <td colspan="3"><input type="text" name="address" size="56"></td>
     </tr>
     <tr>
       <td><label for="size">Select a size:</label></td>
@@ -32,3 +32,6 @@
     </tr>
   </table>
 </form>
+<% if @message.length > 0 %>
+<p><%= @message %></p>
+<% end %>

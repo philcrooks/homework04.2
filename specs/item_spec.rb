@@ -31,6 +31,10 @@ class TestItem < Minitest::Test
     assert_equal(false, @item.id == Item.available.first.id)
   end
 
+  def test_size_0_availability
+    assert_equal(nil, Item.get_by_size(0))
+  end
+
   def test_size_availability
     @item.available = 5
     @item.update

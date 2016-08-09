@@ -7,13 +7,15 @@ require_relative('models/order')
 get( '/order/new' ) do
   @title = "Buy Shoos"
   @stock = Item.available
+  @message = ""
   erb( :new )
 end
 
 post( '/order' ) do
   @order = Order.new(params)
+  missing_fields = @order.missing_fields
   @item = Item.get_by_size(@order.size)
-  if @item.available >= @order.quantity
+  if (missing_fields.count == 0) && (@item.available >= @order.quantity)
     # Save the order
     @title = "Order Confirmation"
     @order.save
@@ -21,8 +23,14 @@ post( '/order' ) do
     @item.update
     erb( :create )
   else
-    @title = "Problem Order"
-    erb( :problem )
+    if missing_fields.count > 0 
+      @message = "You forgot to provide " + Order.fields_to_string(missing_fields)
+    else
+      @message = "You tried to order #{@order.quantity} pairs of size #{@order.size} Shoos but we only have #{@item.available} pairs available."
+    end
+    @title = "Buy Shoos"
+    @stock = Item.available
+    erb( :new )
   end
 end
 

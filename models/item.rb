@@ -22,7 +22,9 @@ class Item
 
   def Item.get_by_size(size)
     sql = "SELECT * FROM items WHERE size = #{size}"
-    return Item.new(SqlRunner.run(sql).first)
+    result = SqlRunner.run(sql)
+    return Item.new(result.first) if result.count > 0
+    return nil
   end
 
   def initialize(options)
