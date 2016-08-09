@@ -2,8 +2,8 @@ require_relative('../db/sql_runner')
 
 class Item
 
-  attr_reader :id, :size
-  attr_accessor :available
+  attr_reader :id
+  attr_accessor :size, :available
 
   def Item.available()
     sql = "SELECT * FROM items WHERE available > 0 ORDER BY id ASC"
